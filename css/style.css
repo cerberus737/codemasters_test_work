@@ -1,0 +1,149 @@
+html {
+  height: 100%;
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url(/fonts/Lobster.ttf);
+  font-style: normal;
+}
+@font-face {
+  font-family: 'fontsO';
+  src: url(/fonts/fontsO.ttf);
+  font-style: normal;
+}
+
+.contact {
+  font-family: 'Lobster';
+  letter-spacing: normal;
+}
+body {
+  font-family: 'fontsO';
+  min-height: 100%;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 20px;
+  background-image: url(/image/back.jpg);
+  background-attachment: fixed;
+}
+
+.container {
+  max-width: 700px;
+  background-image: url(/image/backbody.jpg);
+  /* background: rgb(235, 235, 229); */
+  margin: 0px auto 0px;
+  box-shadow: 1px 1px 2px #dad7d7;
+  border-radius: 3px;
+  padding: 40px;
+  margin-top: 50px;
+}
+.header {
+  display: flex;
+  column-gap: 30px;
+}
+
+.myphoto {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.full-name {
+  font-weight: bold;
+  font-size: 27px;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.email,
+.phone {
+  color: #999;
+  font-weight: 300;
+}
+
+.separator {
+  height: 10px;
+  display: inline-block;
+  border-left: 2px solid #999;
+  margin: 0px 10px;
+}
+.about {
+  border-top: 1px dashed rgb(255, 255, 255);
+}
+
+.section:last-of-type {
+  margin-bottom: 0px;
+}
+
+.section_title {
+  letter-spacing: 2px;
+  color: #54afe4;
+  font-weight: lighter;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: 'Lobster';
+}
+.desc {
+  font-weight: 100;
+  font-style: normal;
+}
+
+.section_list-item {
+  margin-bottom: 40px;
+  display: flex;
+  column-gap: 20px;
+}
+
+.section_list-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.left,
+.right {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.left {
+  width: 60%;
+}
+
+.name {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-style: italic;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+.skills_item {
+  margin-bottom: 10px;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #c3def3;
+  border-radius: 20px;
+  margin-right: 3px;
+}
+
+input:checked + label {
+  background: #79a9ce;
+}
