@@ -31,7 +31,6 @@ body {
 .container {
   max-width: 700px;
   background-image: url(/image/backbody.jpg);
-  /* background: rgb(235, 235, 229); */
   margin: 0px auto 0px;
   box-shadow: 1px 1px 2px #dad7d7;
   border-radius: 3px;
@@ -56,10 +55,18 @@ body {
 
 .contact-info {
   margin-bottom: 20px;
+  margin-top: 5px;
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}
+.contact-item {
+  flex-basis: 45%;
 }
 
 .email,
-.phone {
+.phone,
+.github {
   color: #999;
   font-weight: 300;
 }
@@ -70,8 +77,9 @@ body {
   border-left: 2px solid #999;
   margin: 0px 10px;
 }
-.about {
-  border-top: 1px dashed rgb(255, 255, 255);
+.about,
+.section {
+  border-top: 1px dashed rgb(29 195 255);
 }
 
 .section:last-of-type {
@@ -90,26 +98,43 @@ body {
 .desc {
   font-weight: 100;
   font-style: normal;
+  transform: scale(1, 1);
+  transition-duration: 0.5s;
 }
 
+.desc:hover {
+  color: #54afe4;
+  transform: scale(1.1, 1.1);
+  transition-duration: 0.5s;
+}
 .section_list-item {
   margin-bottom: 40px;
   display: flex;
   column-gap: 20px;
 }
 
-.section_list-item:last-of-type {
-  margin-bottom: 0;
+.section_list_i {
+  transition-duration: 0.5s;
+}
+
+.section_list_i:hover {
+  color: #54afe4;
+  transform: scale(1.1, 1.1);
 }
 
 .left,
 .right {
+  width: 60%;
   vertical-align: top;
   display: inline-block;
+  transition-duration: 0.5s;
 }
 
-.left {
-  width: 60%;
+.left:hover,
+.right:hover {
+  color: #54afe4;
+  transform: scale(1.1, 1.1);
+  transition-duration: 0.5s;
 }
 
 .name {
@@ -129,6 +154,7 @@ a:hover {
 
 .skills_item {
   margin-bottom: 10px;
+  display: flex;
 }
 
 input {
