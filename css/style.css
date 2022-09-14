@@ -13,17 +13,25 @@ html {
 }
 
 .contact {
+  /*принято писать serif или sans-serif в качестве запасного*/
   font-family: 'Lobster';
   letter-spacing: normal;
 }
 body {
+  /*принято писать serif или sans-serif в качестве запасного*/
   font-family: 'fontsO';
   min-height: 100%;
+  /*это по умолчанию*/
   font-weight: 400;
+  /*это по умолчанию*/
   color: rgb(0, 0, 0);
   font-size: 16px;
   line-height: 26px;
   padding-bottom: 20px;
+  /*на 4к это вот так https://prnt.sc/wDFfPI7hDA5B
+  надо чуть подробнее посмотреть тебе свойства background
+  оба /image/ изображения неоптимизированы, много весят, надо прогонять через оптимизации
+  */
   background-image: url(/image/back.jpg);
   background-attachment: fixed;
 }
@@ -31,6 +39,8 @@ body {
 .container {
   max-width: 700px;
   background-image: url(/image/backbody.jpg);
+  /*можно проще margin: 50px auto 0;
+  потом что вижу ниже переопределение*/
   margin: 0px auto 0px;
   box-shadow: 1px 1px 2px #dad7d7;
   border-radius: 3px;
@@ -64,6 +74,7 @@ body {
   flex-basis: 45%;
 }
 
+/*три дубликата вместо одного хорошего класса .text-accent например */
 .email,
 .phone,
 .github {
@@ -88,7 +99,9 @@ body {
 
 .section_title {
   letter-spacing: 2px;
+  /*этот цвет дублируется, всё что дублируется очень удобно выносить через css variables, как например здесь var(--primary-color)*/
   color: #54afe4;
+  /*это не сработает, ты его не подключал, подключил только 400 (normal)*/
   font-weight: lighter;
   margin-top: 40px;
   margin-bottom: 10px;
@@ -96,8 +109,10 @@ body {
   font-family: 'Lobster';
 }
 .desc {
+  /*это не сработает, ты его не подключал, подключил только 400 (normal)*/
   font-weight: 100;
   font-style: normal;
+  /*в чем суть трансформа здесь? попробуй удалить*/
   transform: scale(1, 1);
   transition-duration: 0.5s;
 }
@@ -113,17 +128,26 @@ body {
   column-gap: 20px;
 }
 
+/*я не понимаю систему именования, выше есть через дефис и нижнее подчёркивание, а ещё в html встретил camelCase*/
 .section_list_i {
   transition-duration: 0.5s;
 }
 
+/*у тебя очень много дублирования этой идеи на hover,*/
+/*как насчёт создать один раз .box и .box:hover фичи и прицепить их ко всем необходимым html тегам?*/
+/*как и в программировании - дублирование в css это нежелательная практика*/
 .section_list_i:hover {
   color: #54afe4;
   transform: scale(1.1, 1.1);
 }
 
+/*плохие именна классов, запросто при новой компоновки оба блока могут быть друг под другом или поменяться местами*/
+/*блоки принято именовать по содержимому*/
 .left,
 .right {
+  /**
+  Общая идея не очень, для компоновки есть гриды и флексы
+   */
   width: 60%;
   vertical-align: top;
   display: inline-block;
@@ -141,6 +165,11 @@ body {
   font-weight: bold;
 }
 
+/*задавать цвета вообще всем ссылкам - плохая идея, лучше дать класс .link и его проставлять в html,*/
+/*иначе это будет одно из первых мест к рефакторингу или ещё хуже к оверрайду тех стилей что здесь задал*/
+
+/*что ещё хуже ты сделал их неотличимыми от текста, это ломает UX, ссылки должны выделяться на общем фоне, знать что */
+/*пользователь может кликнуть, а hover здесь не очень поможет, сейчас почти всегда с мобилок пользуются сайтами, там не мышки*/
 a {
   text-decoration: none;
   color: #000;
@@ -157,6 +186,9 @@ a:hover {
   display: flex;
 }
 
+/*а что если сайт получит форму входа с логин паролем через два инпута? */
+/*они просто пропадут с твоего сайта из-за этих стилей*/
+/*всегда задавай классы для вёрстки, без исключения*/
 input {
   display: none;
 }
