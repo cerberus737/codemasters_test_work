@@ -12,72 +12,66 @@ html {
   font-style: normal;
 }
 
-.contact {
-  /*принято писать serif или sans-serif в качестве запасного*/
-  font-family: 'Lobster';
-  letter-spacing: normal;
+:root {
+  --primary-color: #54afe4;
 }
+
+.interactive:hover {
+  color: var(--primary-color);
+  transform: scale(1.1, 1.1);
+}
+
+.visual_design {
+  width: 100%;
+  transition-duration: 0.5s;
+}
+
 body {
-  /*принято писать serif или sans-serif в качестве запасного*/
-  font-family: 'fontsO';
+  font-family: fontsO, sans-serif;
   min-height: 100%;
-  /*это по умолчанию*/
-  font-weight: 400;
-  /*это по умолчанию*/
-  color: rgb(0, 0, 0);
+  padding-bottom: 20px;
   font-size: 16px;
   line-height: 26px;
-  padding-bottom: 20px;
-  /*на 4к это вот так https://prnt.sc/wDFfPI7hDA5B
-  надо чуть подробнее посмотреть тебе свойства background
-  оба /image/ изображения неоптимизированы, много весят, надо прогонять через оптимизации
-  */
-  background-image: url(/image/back.jpg);
-  background-attachment: fixed;
+  background: url(/image/back.jpg) 0 0 / 100% 100% no-repeat fixed;
 }
 
 .container {
   max-width: 700px;
   background-image: url(/image/backbody.jpg);
-  /*можно проще margin: 50px auto 0;
-  потом что вижу ниже переопределение*/
-  margin: 0px auto 0px;
+  background-size: cover;
+  margin: 50px auto 0px;
   box-shadow: 1px 1px 2px #dad7d7;
   border-radius: 3px;
   padding: 40px;
-  margin-top: 50px;
-}
-.header {
-  display: flex;
-  column-gap: 30px;
 }
 
-.myphoto {
+.header {
+  column-gap: 30px;
+  display: flex;
+}
+
+.contact {
+  font-family: Lobster, serif;
+  letter-spacing: normal;
+}
+
+.my_photo {
   width: 200px;
   height: 200px;
   border-radius: 50%;
 }
 
-.full-name {
-  font-weight: bold;
-  font-size: 27px;
-}
-
-.contact-info {
-  margin-bottom: 20px;
-  margin-top: 5px;
+.contact_info {
   display: flex;
+  align-content: flex-end;
   column-gap: 10px;
   flex-wrap: wrap;
 }
-.contact-item {
+.contact_item {
   flex-basis: 45%;
 }
 
-/*три дубликата вместо одного хорошего класса .text-accent например */
-.email,
-.phone,
-.github {
+.text_accent {
   color: #999;
   font-weight: 300;
 }
@@ -90,93 +84,36 @@ body {
 }
 .about,
 .section {
-  border-top: 1px dashed rgb(29 195 255);
-}
-
-.section:last-of-type {
-  margin-bottom: 0px;
+  border-top: 1px dashed var(--primary-color);
+  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .section_title {
   letter-spacing: 2px;
-  /*этот цвет дублируется, всё что дублируется очень удобно выносить через css variables, как например здесь var(--primary-color)*/
-  color: #54afe4;
-  /*это не сработает, ты его не подключал, подключил только 400 (normal)*/
-  font-weight: lighter;
-  margin-top: 40px;
+  color: var(--primary-color);
   margin-bottom: 10px;
   text-transform: uppercase;
   font-family: 'Lobster';
 }
-.desc {
-  /*это не сработает, ты его не подключал, подключил только 400 (normal)*/
-  font-weight: 100;
-  font-style: normal;
-  /*в чем суть трансформа здесь? попробуй удалить*/
-  transform: scale(1, 1);
-  transition-duration: 0.5s;
+
+.name {
+  margin: 0;
 }
 
-.desc:hover {
-  color: #54afe4;
-  transform: scale(1.1, 1.1);
-  transition-duration: 0.5s;
-}
-.section_list-item {
+.section_list_item {
   margin-bottom: 40px;
   display: flex;
   column-gap: 20px;
 }
 
-/*я не понимаю систему именования, выше есть через дефис и нижнее подчёркивание, а ещё в html встретил camelCase*/
-.section_list_i {
-  transition-duration: 0.5s;
-}
-
-/*у тебя очень много дублирования этой идеи на hover,*/
-/*как насчёт создать один раз .box и .box:hover фичи и прицепить их ко всем необходимым html тегам?*/
-/*как и в программировании - дублирование в css это нежелательная практика*/
-.section_list_i:hover {
-  color: #54afe4;
-  transform: scale(1.1, 1.1);
-}
-
-/*плохие именна классов, запросто при новой компоновки оба блока могут быть друг под другом или поменяться местами*/
-/*блоки принято именовать по содержимому*/
-.left,
-.right {
-  /**
-  Общая идея не очень, для компоновки есть гриды и флексы
-   */
-  width: 60%;
-  vertical-align: top;
-  display: inline-block;
-  transition-duration: 0.5s;
-}
-
-.left:hover,
-.right:hover {
-  color: #54afe4;
-  transform: scale(1.1, 1.1);
-  transition-duration: 0.5s;
-}
-
-.name {
-  font-weight: bold;
-}
-
-/*задавать цвета вообще всем ссылкам - плохая идея, лучше дать класс .link и его проставлять в html,*/
-/*иначе это будет одно из первых мест к рефакторингу или ещё хуже к оверрайду тех стилей что здесь задал*/
-
-/*что ещё хуже ты сделал их неотличимыми от текста, это ломает UX, ссылки должны выделяться на общем фоне, знать что */
-/*пользователь может кликнуть, а hover здесь не очень поможет, сейчас почти всегда с мобилок пользуются сайтами, там не мышки*/
-a {
+.link {
   text-decoration: none;
   color: #000;
   font-style: italic;
 }
 
-a:hover {
+.link:hover {
   text-decoration: underline;
   color: #000;
 }
@@ -186,14 +123,11 @@ a:hover {
   display: flex;
 }
 
-/*а что если сайт получит форму входа с логин паролем через два инпута? */
-/*они просто пропадут с твоего сайта из-за этих стилей*/
-/*всегда задавай классы для вёрстки, без исключения*/
-input {
+.skill_checkbox {
   display: none;
 }
 
-label {
+.skill_label {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -202,6 +136,29 @@ label {
   margin-right: 3px;
 }
 
-input:checked + label {
+.skill_checkbox:checked + .skill_label {
   background: #79a9ce;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+  .container {
+    margin: 0 auto;
+  }
+  .body {
+    padding-bottom: 0px;
+  }
+}
+@media (max-width: 400px) {
+  .section_list_item {
+    flex-direction: column;
+    column-gap: 15px;
+  }
+  .skill_name {
+    flex-basis: 90%;
+  }
 }
